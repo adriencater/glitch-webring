@@ -1,1 +1,18 @@
-/* webring css */
+/* Webring css */
+#Webring {
+	width: max-content;
+	background-color: #CCC;
+	color: #000;
+	border-radius: 2px;
+	border: 1px solid #999;
+	text-transform: lowercase;
+}
+#Webring a {
+	display: inline-block;
+	color: inherit;
+	text-decoration: none;
+	padding: 0.5em;
+}
+#Webring a:hover {
+	background-color: #EEE;
+}
