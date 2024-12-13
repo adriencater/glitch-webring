@@ -1,2 +1,1 @@
-# glitch-webring
- webring softare for glitch.com
+# [Webrings](https://en.wikipedia.org/wiki/Webring) are social networks owned by the participants.
