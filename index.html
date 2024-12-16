@@ -12,12 +12,58 @@
 </head>
 <body>
 
-	Hub page for a glitch.com webring.
+<p>Hub page for a glitch.com webring.</p>
 
 	<!-- Webring -->
 	<div id="Webring"></div>
 	<script src="https://webring.glitch.me/webring.js"></script>
 	<!-- Webring -->
+<ul id="Menu"></ul>
+<!-- hub page main menu list -->
+<script>
+const listGlitchPlaylist = "https://glitch.com/@adriencateracom/webring-test";
+
+const listGlitchAPIbaseurl = "https://api.glitch.com/v1/collections/by/fullUrl/projects?fullUrl=";
+const listDataString = listGlitchPlaylist.replace('https://glitch.com/@', '');
+const listDataUrl = listGlitchAPIbaseurl + listDataString;
+
+const listList = []; // Initialize an empty list to store the "domain" values
+
+async function makeList() {
+	try {
+		const listResponse = await fetch(listDataUrl); // Fetch data from the URL
+		
+		if (!listResponse.ok) {
+			throw new Error(`HTTP error! Status: ${listResponse.status}`);
+		}
+
+		const listData = await listResponse.json();
+		
+		listData.items.forEach(item => {
+			listList.push(item.domain);
+		});
+
+		var listContent = "";
+		listList.forEach(item => {
+			listContent += '<li><a href="https://';
+			listContent += item;
+			listContent += '.glitch.me">';
+			listContent += item;
+			listContent += "</a></li>";
+		});
+
+		const theMenu = document.getElementById('Menu');
+		theMenu.innerHTML = listContent;
+
+	} catch (error) {
+		console.error('Error fetching data:', error);
+	}
+}//makeList()
+makeList();
+</script>
+<!-- hub page main menu list -->
+
 	
+
 </body>
 </html>
