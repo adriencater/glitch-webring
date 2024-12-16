@@ -10,13 +10,13 @@ const webRingTitle = "Test Ring";
 const glitchAPIbaseurl = "https://api.glitch.com/v1/collections/by/fullUrl/projects?fullUrl=";
 const dataString = glitchPlaylist.replace('https://glitch.com/@', '');
 const dataUrl = glitchAPIbaseurl + dataString;
-console.log("data source: " + dataUrl);
+//console.log("data source: " + dataUrl);
 
-const theList = []; // Initialize an empty list to store the "domain" values
+const theList = [];
 
 async function fetchData() {
 	try {
-		const response = await fetch(dataUrl); // Fetch data from the URL
+		const response = await fetch(dataUrl);
 		
 		if (!response.ok) {
 			throw new Error(`HTTP error! Status: ${response.status}`);
@@ -63,6 +63,4 @@ async function fetchData() {
 	}
 }//fetchData()
 
-window.onload = function(){
-	fetchData();
-};//window.onload
+fetchData();
