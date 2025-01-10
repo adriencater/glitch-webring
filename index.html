@@ -21,7 +21,7 @@
 const listGlitchPlaylist = "https://glitch.com/@adriencateracom/webring-test";
 const listGlitchAPIbaseurl = "https://api.glitch.com/v1/collections/by/fullUrl/projects?fullUrl=";
 const listDataString = listGlitchPlaylist.replace('https://glitch.com/@', '');
-const listDataUrl = listGlitchAPIbaseurl + listDataString;
+const listDataUrl = listGlitchAPIbaseurl + listDataString + "&limit=100";
 const listList = [];
 async function makeList() {
 	try {
