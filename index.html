@@ -14,31 +14,23 @@
 
 <p>Hub page for a glitch.com webring.</p>
 
-<ul id="Menu"></ul>
+
 <!-- hub page main menu list -->
+<ul id="Menu"></ul>
 <script>
 const listGlitchPlaylist = "https://glitch.com/@adriencateracom/webring-test";
-
 const listGlitchAPIbaseurl = "https://api.glitch.com/v1/collections/by/fullUrl/projects?fullUrl=";
 const listDataString = listGlitchPlaylist.replace('https://glitch.com/@', '');
 const listDataUrl = listGlitchAPIbaseurl + listDataString;
-
-const listList = []; // Initialize an empty list to store the "domain" values
-
+const listList = [];
 async function makeList() {
 	try {
-		const listResponse = await fetch(listDataUrl); // Fetch data from the URL
-		
-		if (!listResponse.ok) {
-			throw new Error(`HTTP error! Status: ${listResponse.status}`);
-		}
-
+		const listResponse = await fetch(listDataUrl);
+		if (!listResponse.ok) { throw new Error(`HTTP error! Status: ${listResponse.status}`); }
 		const listData = await listResponse.json();
-		
 		listData.items.forEach(item => {
 			listList.push(item.domain);
 		});
-
 		var listContent = "";
 		listList.forEach(item => {
 			listContent += '<li><a href="https://';
@@ -47,13 +39,9 @@ async function makeList() {
 			listContent += item;
 			listContent += "</a></li>";
 		});
-
 		const theMenu = document.getElementById('Menu');
 		theMenu.innerHTML = listContent;
-
-	} catch (error) {
-		console.error('Error fetching data:', error);
-	}
+	} catch (error) { console.error('Error fetching data:', error); }
 }//makeList()
 makeList();
 </script>
